@@ -1,5 +1,7 @@
 package com.spring.jdbc;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
@@ -15,45 +17,56 @@ public class App {
 
 		StudentDao studentDao = context.getBean("studentDao", StudentDao.class);
 
-		/*
-		 * **INSERT DATA**
-		 * 
-		 * Student student = new Student();
-		 * 
-		 * student.setId(103); student.setName("Piyush"); student.setCity("Mumbai");
-		 * 
-		 * int result = studentDao.insert(student);
-		 * 
-		 * System.out.println("Number of record inserted : " + result);
-		 */
+//		**INSERT Student**
 
+		Student student = new Student();
+
+		student.setId(103);
+		student.setName("John Doe");
+		student.setCity("Cape Town");
+
+		int result = studentDao.insert(student);
+
+		System.out.println("Number of student inserted : " + result);
+
+//		 **UPDATE Student** 
 		/*
-		 * **UPDATE DATA** Student student = new Student();
+		 * Student student = new Student();
 		 * 
 		 * student.setId(102); student.setName("Manish"); student.setCity("Vasad");
 		 * 
 		 * int result = studentDao.change(student);
 		 * 
-		 * System.out.println("Number of record updated : " + result);
+		 * System.out.println("Number of student updated : " + result);
 		 */
 
+//		** DELETE Student** 
 		/*
-		 * ** DELETE DATA** Scanner sc = new Scanner(System.in);
+		 * Scanner sc = new Scanner(System.in);
 		 * System.out.print("Enter user id for delete record : "); int a = sc.nextInt();
 		 * 
 		 * int result = studentDao.delete(a);
 		 * 
-		 * System.out.println("Number of record deleted : " + result);
+		 * System.out.println("Number of student deleted : " + result);
 		 */
 
-		// **Select DATA**
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter user id for select record : ");
-		int a = sc.nextInt();
+//		**Select Student** 
+		/*
+		 * Scanner sc = new Scanner(System.in);
+		 * System.out.print("Enter user id for select record : "); int a = sc.nextInt();
+		 * 
+		 * Student result = studentDao.getStudent(a);
+		 * 
+		 * System.out.println("Student data : " + result);
+		 */
 
-		Student result = studentDao.getStudent(a);
+		// **Select all Student**
+		List<Student> results = studentDao.getAllStudents();
 
-		System.out.println("Student data : " + result);
+		System.out.println("All student data : ");
+		for (Student list : results) {
+			System.out.println(list);
+		}
 
 	}
 }
