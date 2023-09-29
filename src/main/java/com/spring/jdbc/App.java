@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.spring.jdbc.dao.StudentDao;
 import com.spring.jdbc.entites.Student;
@@ -13,21 +14,22 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("JDBC project running......");
 		/* Spring JDBC=> jdbcTemplate */
-		ApplicationContext context = new ClassPathXmlApplicationContext("com/spring/jdbc/config.xml");
+//		ApplicationContext context = new ClassPathXmlApplicationContext("com/spring/jdbc/config.xml"); // IT's use only with XML file.
+		ApplicationContext context = new AnnotationConfigApplicationContext(JdbcConfig.class);
 
 		StudentDao studentDao = context.getBean("studentDao", StudentDao.class);
 
 //		**INSERT Student**
 
-		Student student = new Student();
-
-		student.setId(103);
-		student.setName("John Doe");
-		student.setCity("Cape Town");
-
-		int result = studentDao.insert(student);
-
-		System.out.println("Number of student inserted : " + result);
+		/*
+		 * Student student = new Student();
+		 * 
+		 * student.setId(104); student.setName("Max"); student.setCity("Johannesburg");
+		 * 
+		 * int result = studentDao.insert(student);
+		 * 
+		 * System.out.println("Number of student inserted : " + result);
+		 */
 
 //		 **UPDATE Student** 
 		/*
