@@ -53,7 +53,7 @@ public class App {
 
 		Student result = studentDao.getStudent(a);
 
-		System.out.println("Number of record deleted : " + result);
+		System.out.println("Student data : " + result);
 
 	}
 }

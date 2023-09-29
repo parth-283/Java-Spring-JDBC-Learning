@@ -47,7 +47,7 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Override
 	public Student getStudent(int studentId) {
-		// Delete data
+		// Select data
 		String query = "select * from student where id=?";
 
 		RowMapper<Student> rowMapper = new RowMapperImpl();
